@@ -8,6 +8,7 @@ import android.view.View;
 import mk.fr.databinding.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+
     private Person pinpin;
     private ActivityMainBinding binding;
 

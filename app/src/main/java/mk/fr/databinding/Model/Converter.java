@@ -1,13 +1,20 @@
 package mk.fr.databinding.Model;
 
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
+
+import mk.fr.databinding.BR;
+
 /**
  * Created by Formation on 19/01/2018.
  */
 
-public class Converter {
+public class Converter extends BaseObservable {
 
     private Double euro;
     private Double yen;
+
+
 
     public Converter() {
     }
@@ -17,21 +24,32 @@ public class Converter {
         this.yen = yen;
     }
 
-    public Double getEuro() {
-        return euro;
+    @Bindable
+    public String getEuro() {
+        return String.valueOf(euro);
     }
 
-    public Converter setEuro(Double euro) {
-        this.euro = euro;
+    public Converter setEuro(String euro) {
+        if(! euro .equals("")) {
+            this.euro = Double.valueOf(euro);
+            this.yen = this.euro * 135.788;
+        }else{
+            this.yen=0.0;
+        }
+        //Notifie que la vue doit être changer
+        notifyPropertyChanged(BR.yen);
         return this;
     }
 
-    public Double getYen() {
-        return yen;
+    @Bindable
+    public String getYen() {
+        return String.valueOf(this.yen);
+
     }
 
-    public Converter setYen(Double yen) {
-        this.yen = yen;
+    public Converter setYen(String yen) {
+        this.yen = Double.valueOf(yen);
+
         return this;
     }
 }
