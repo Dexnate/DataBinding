@@ -47,6 +47,7 @@ public class Converter extends BaseObservable {
 
     }
 
+
     public Converter setYen(String yen) {
         this.yen = Double.valueOf(yen);
 
